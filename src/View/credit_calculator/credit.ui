@@ -56,12 +56,9 @@
      <item row="6" column="0">
       <widget class="QCheckBox" name="checkBoxDifferentiated">
        <property name="text">
-        <string>Differentiated (default is annuity)</string>
+        <string>Differentiated</string>
        </property>
       </widget>
-     </item>
-     <item row="5" column="1" rowspan="3">
-      <widget class="QListView" name="listViewMountlyPayment"/>
      </item>
      <item row="4" column="1">
       <widget class="QLabel" name="label_6">
@@ -129,6 +126,9 @@
         <string>Interest rate:</string>
        </property>
       </widget>
+     </item>
+     <item row="5" column="1" rowspan="2">
+      <widget class="QListView" name="listViewMountlyPayment"/>
      </item>
     </layout>
    </item>
