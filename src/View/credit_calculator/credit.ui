@@ -7,67 +7,34 @@
     <x>0</x>
     <y>0</y>
     <width>579</width>
-    <height>400</height>
+    <height>288</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>CreditCalc</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(222, 221, 218);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Total credit amount:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Total payment:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QTextEdit" name="inputInterestRateLine">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QTextEdit" name="inputOverpaymentLine">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QCheckBox" name="checkBoxDifferentiated">
-       <property name="text">
-        <string>Differentiated</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Mounthly payment:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QTextEdit" name="inputTotalCreditAMountLine">
        <property name="minimumSize">
         <size>
@@ -81,9 +48,39 @@
          <height>30</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(246, 245, 244);</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Interest rate:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QTextEdit" name="inputInterestRateLine">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(246, 245, 244);</string>
+       </property>
       </widget>
      </item>
      <item row="3" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Term:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
       <widget class="QTextEdit" name="inputTermLine">
        <property name="maximumSize">
         <size>
@@ -91,16 +88,26 @@
          <height>30</height>
         </size>
        </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Term:</string>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(246, 245, 244);</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Total credit amount:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Overpayment:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
       <widget class="QTextEdit" name="inputTotalPaymentLine">
        <property name="maximumSize">
         <size>
@@ -108,36 +115,69 @@
          <height>30</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(246, 245, 244);</string>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="label_4">
+     <item row="5" column="2">
+      <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>Overpayment:</string>
+        <string>Mounthly payment:</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_3">
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Interest rate:</string>
+        <string>Total payment:</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1" rowspan="2">
-      <widget class="QListView" name="listViewMountlyPayment"/>
+     <item row="2" column="2">
+      <widget class="QTextEdit" name="inputOverpaymentLine">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(246, 245, 244);</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2" rowspan="3">
+      <widget class="QListView" name="listViewMountlyPayment">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(246, 245, 244);</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QCheckBox" name="checkBoxDifferentiated">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Differentiated</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QPushButton" name="pushButton_calculate">
+       <property name="text">
+        <string>Calculate</string>
+       </property>
+      </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QPushButton" name="pushButton_calculate">
-     <property name="text">
-      <string>Calculate</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
