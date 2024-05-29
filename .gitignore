@@ -2,6 +2,7 @@
 build
 build-src*
 .vscode
+CMakeLists.txt.user
 
 # Prerequisites
 *.d

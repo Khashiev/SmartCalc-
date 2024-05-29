@@ -68,8 +68,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE qcustomplot)
-
-# Compile needed definitions
 target_compile_definitions(${PROJECT_NAME} PRIVATE QCUSTOMPLOT_USE_LIBRARY)
 
 add_subdirectory(qcp)

@@ -4,17 +4,6 @@ cmake_minimum_required(VERSION 3.14)
 set(PROJECT_NAME qcustomplot)
 set(PROJECT_VERSION_SEMANTIC 2.1.1)
 
-# Set project options
-# Options availables for external project start with "EXT_OPT_QCPLIB_", those options can be use in top CMakeFiles.
-# All options are disabled by default.
-# List of available options :
-# - Currently no options available
-
-# Check for target architecture
-# if(NOT PROJECT_ARCH_TARGET)
-#     message(FATAL_ERROR "Cmake variable \"PROJECT_ARCH_TARGET\" is undefined, please set it in your root CMakelist.")
-# endif()
-
 # Set project configuration
 project(${PROJECT_NAME} LANGUAGES CXX)
 project(${PROJECT_NAME} VERSION "${PROJECT_VERSION_SEMANTIC}")
@@ -90,12 +79,6 @@ target_link_libraries(${PROJECT_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::PrintSupport
 
 # Compile needed definitions
 target_compile_definitions(${PROJECT_NAME} PRIVATE QCUSTOMPLOT_COMPILE_LIBRARY)
-
-# Definition which depends on options
-# Ex :
-# if(EXT_OPT_QCPLIB_XYZ)
-#   target_compile_definitions(${PROJECT_NAME} PRIVATE QCPLIB_ENABLE_XYZ)
-# endif()
 
 # Directories to includes
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
