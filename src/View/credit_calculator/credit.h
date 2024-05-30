@@ -27,7 +27,7 @@ class Credit : public QWidget {
   double total_credit_amount = 0.0;
   int term = 0;
   double interest_rate = 0.0;
-  bool flag = false;  // false = annuity / true = differentiated
+  bool flag = false;  // default = annuity
   double overpay = 0.0;
   double total_payment = 0.0;
   double payment_mouth = 0.0;

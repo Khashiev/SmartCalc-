@@ -10,8 +10,6 @@ using namespace s21;
 Model::Model()
     : functions_table({"cos", "sin", "tan", "tg", "tan", "acos", "asin", "atan",
                        "sqrt", "ln", "log"}) {
-  // functions is -1 priority
-  // num is 0 priority
   priority_table['('] = 1;
   priority_table[')'] = 1;
   priority_table['+'] = 2;
@@ -20,7 +18,7 @@ Model::Model()
   priority_table['/'] = 3;
   priority_table['%'] = 3;
   priority_table['^'] = 4;
-  priority_table['u'] = 5;  // унарный минус
+  priority_table['u'] = 5;
 }
 
 double Model::Calculate(std::string input_str) {
@@ -51,27 +49,22 @@ std::vector<Model::Token> Model::StrToTokens(std::string &input_str) {
   Token current_token;
   std::size_t i = 0;
   while (i < input_str.length()) {
-    // Убираем пробелы
     if (input_str[i] == ' ') {
       i++;
       continue;
     }
 
-    // Нашли число
     if (std::isdigit(input_str[i])) {
       current_token.priority = 0;
       current_token_str.push_back(input_str[i]);
       i++;
 
-      // Если число составное
       while (i < input_str.length() &&
              (std::isdigit(input_str.at(i)) || input_str.at(i) == '.')) {
         current_token_str.push_back(input_str[i]);
         i++;
       }
-      // Нашли оператор
     } else if (IsOperator(input_str[i])) {
-      // Проверка на унарные операторы
       if (!i) {
         if (input_str[i] == '+') {
           i++;
@@ -91,13 +84,11 @@ std::vector<Model::Token> Model::StrToTokens(std::string &input_str) {
       current_token.priority = priority_table.at(input_str[i]);
       current_token_str.push_back(input_str[i]);
       i++;
-      // Нашли функцию
     } else if (IsFunction(input_str[i])) {
       current_token.priority = -1;
       current_token_str.push_back(input_str[i]);
       i++;
 
-      // Если число составное
       while (i < input_str.length() && input_str[i] != '(') {
         current_token_str.push_back(input_str[i]);
         i++;
@@ -120,9 +111,9 @@ std::vector<Model::Token> Model::InfixToRpn(
   std::stack<Token> operators_stack;
 
   for (const Token &current_token : input_expression) {
-    if (!current_token.priority) {  // Если число
+    if (!current_token.priority) {
       result.push_back(current_token);
-    } else if (current_token.priority > 1) {  // Если оператор, кроме скобок
+    } else if (current_token.priority > 1) {
       if (operators_stack.empty()) {
         operators_stack.push(current_token);
       } else if (operators_stack.top().priority >= current_token.priority) {
@@ -139,7 +130,7 @@ std::vector<Model::Token> Model::InfixToRpn(
       } else {
         operators_stack.push(current_token);
       }
-    } else if (current_token.priority == 1) {  // Если скобки
+    } else if (current_token.priority == 1) {
       if (current_token.token == "(") {
         operators_stack.push(current_token);
       } else if (current_token.token == ")") {
@@ -147,8 +138,7 @@ std::vector<Model::Token> Model::InfixToRpn(
           result.push_back(operators_stack.top());
           operators_stack.pop();
         }
-        operators_stack.pop();  // Удаляем '('
-        // Проверка на функцию
+        operators_stack.pop();
         if (!operators_stack.empty()) {
           if (operators_stack.top().priority == -1) {
             result.push_back(operators_stack.top());
@@ -156,12 +146,12 @@ std::vector<Model::Token> Model::InfixToRpn(
           }
         }
       }
-    } else if (current_token.priority == -1) {  // Если функция
+    } else if (current_token.priority == -1) {
       operators_stack.push(current_token);
     }
   }
 
-  if (!operators_stack.empty()) {  // В конце пихаем всё из стека в строку
+  if (!operators_stack.empty()) {
     for (std::size_t i = 0; i < operators_stack.size(); i++) {
       result.push_back(operators_stack.top());
       operators_stack.pop();
@@ -182,12 +172,10 @@ double Model::RpnToResult(const std::vector<Token> &input_rpn) {
   Token tmp;
 
   for (const Token &current_token : input_rpn) {
-    // Если число
     if (!current_token.priority) {
       num_stack.push(current_token);
     } else if (current_token.priority > 1 && current_token.priority < 5) {
       if (num_stack.empty()) {
-        //  говно, переделывай
         throw std::runtime_error("Task Error");
       }
       b = std::stod(num_stack.top().token);
@@ -256,7 +244,7 @@ double Model::RpnToResult(const std::vector<Token> &input_rpn) {
   }
 
   if (num_stack.size() > 1) {
-    throw std::runtime_error("Стек чисел не был пустым!");
+    throw std::runtime_error("Error");
   }
   return std::stod(num_stack.top().token);
 }
@@ -265,7 +253,6 @@ bool Model::IsOperator(char input) {
   return priority_table.find(input) != priority_table.end();
 }
 
-// Функция не производит полную проверку!
 bool Model::IsFunction(char input) {
   auto it =
       std::find_if(functions_table.begin(), functions_table.end(),
